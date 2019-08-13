@@ -11,11 +11,11 @@ import scipy
 from PIL import Image
 from os.path import isfile, join
 
-from model_keras import get_model_smaller2 as get_model1
-from model_keras import get_model_smaller3 as get_model2
-from model_keras import get_model_smaller4 as get_model3
+from models import get_model_smaller2 as get_model1
+from models import get_model_smaller3 as get_model2
+from models import get_model_smaller4 as get_model3
 
-from calcuate_score import get_score
+from calculate_score import get_score
 
 import tensorflow as tf
 config = tf.ConfigProto()
@@ -62,20 +62,20 @@ def predict_from_img(image):
 	model3_conficence =  max(label3)*100
 	
 	
-#	print("Model 1 emotion---:", model1_emotion)
-#	print("Model 1 confidence---: ", model1_conficence)
+	print("Model 1 emotion---:", model1_emotion)
+	print("Model 1 confidence---: ", model1_conficence)
 	if model1_emotion == 'Pos' and model1_conficence < 85.0:
 		model1_emotion = 'Non-pos'
-#		print("Model 1 emotion overturned to Non-pos......")
+		print("Model 1 emotion overturned to Non-pos......")
 
-#	print("Model 2 emotion---:", model2_emotion)
-#	print("Model 2 confidence---: ", model2_conficence)
+	print("Model 2 emotion---:", model2_emotion)
+	print("Model 2 confidence---: ", model2_conficence)
 	if model2_emotion == 'Pos' and model2_conficence < 85.0:
 		model2_emotion = 'Non-pos'
-#		print("Model 2 emotion overturned to Non-pos......")
+		print("Model 2 emotion overturned to Non-pos......")
 
-#	print("Model 3 emotion---:", model3_emotion)
-#	print("Model 3 confidence---: ",model3_conficence)	
+	print("Model 3 emotion---:", model3_emotion)
+	print("Model 3 confidence---: ",model3_conficence)	
 	if model3_emotion == 'Pos' and model3_conficence < 85.0:
 		model3_emotion = 'Non-pos'
 		print("Model 3 emotion overturned to Non-pos......")
@@ -102,6 +102,10 @@ model3._make_predict_function()
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
+print(model1.summary())
+print(model2.summary())
+print(model3.summary())
+
 
 def detect_faces(image):
 	face_detector = dlib.get_frontal_face_detector()
@@ -124,6 +128,7 @@ def get_smile_meter_score(image):
 def predict_emotion(img_path, random_name, start):
 
 	image = cv2.imread(img_path, 0)
+	print("image shape:", image.shape)
 	detected_faces = detect_faces(image)
 	print(detected_faces)
 	rotation = 0
@@ -176,7 +181,9 @@ def predict():
 	params = flask.request.json
 	if (params == None):
 		params = flask.request.args
-	else:
+		print("in if...")
+	if (params != None):
+		print("in else...")
 		f = flask.request.files['file_data']
 		random_name = str(random.randint(1,50000000)) + ".jpg"
 

@@ -30,7 +30,7 @@ def train(epochs=epochs, batch_size=batch_size,train_model=True):
 	model = get_model()
 
 	es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=15)
-	mc = ModelCheckpoint(save_model_path + 'best_model_check.h5', monitor='val_acc', mode='max', verbose=1, save_best_only=True)
+	mc = ModelCheckpoint(save_model_path + 'best_model.h5', monitor='val_acc', mode='max', verbose=1, save_best_only=True)
 
 	model_info = model.fit(data['X'], data['Y'], epochs=epochs, batch_size=batch_size, validation_data=(validation['X'], validation['Y']),callbacks=[es, mc])
 

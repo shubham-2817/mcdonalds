@@ -4,7 +4,7 @@ import numpy as np
 
 class Dataset:
 	name = 'Fer2013'
-	train_folder = '/training'
+	train_folder = 'data/'
 
 
 class Network:
