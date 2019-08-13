@@ -11,11 +11,11 @@ import scipy
 from PIL import Image
 from os.path import isfile, join
 
-from model_keras import get_model_smaller2 as get_model1
-from model_keras import get_model_smaller3 as get_model2
-from model_keras import get_model_smaller4 as get_model3
+from models import get_model_smaller2 as get_model1
+from models import get_model_smaller3 as get_model2
+from models import get_model_smaller4 as get_model3
 
-from calcuate_score import get_score
+from calculate_score import get_score
 
 import tensorflow as tf
 config = tf.ConfigProto()
