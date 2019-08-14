@@ -5,7 +5,7 @@ This repo contains the project of smile detection and to give a score for the de
 ## Modules:
 
 1.  Smile detection- Uses CNN to predict the emotion
-2.  Smile meter    - Uses facial landmarks to to the score  
+2.  Smile meter    - Uses facial landmarks to generate the score  
 
 ### Installation and running the server
 
