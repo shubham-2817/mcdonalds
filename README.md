@@ -21,9 +21,9 @@ $ pip3 install -r requirements.txt
 
 Training the model
 ```sh
-$ python3 keras7.py
-$ python3 keras8.py
-$ python3 keras9.py
+$ python3 keras7.py --train=yes
+$ python3 keras8.py --train=yes
+$ python3 keras9.py --train=yes
 ```
 
 
