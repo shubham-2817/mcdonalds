@@ -1,3 +1,8 @@
+"""
+This file contains different smile detection models.
+Other than the function- get_model_with_lmks, all the models dont use the facial landmarks.
+"""
+
 from keras.models import Sequential, Model
 from keras.layers import Dense, Dropout, Flatten, BatchNormalization, Input
 from keras.layers import *
