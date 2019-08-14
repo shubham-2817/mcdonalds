@@ -1,3 +1,10 @@
+"""
+This script trains the smile detection model and saves the best model.
+
+To train model- python3 keras9.py --train=yes
+To evaluate model- python3 keras9.py --evaluate=yes
+"""
+
 import time
 import argparse
 import os
