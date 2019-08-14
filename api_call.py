@@ -1,3 +1,11 @@
+"""
+This script runs the flask api, the api call returns a dictionary. 
+The main keys of the dictionary are "emotion" and "score".
+
+The function predict_from_img, loads 3 different models, takes a tensor image and returns the emotion based on voting.
+The function get_smile_meter_score uses euclidean distances of the facial landmarks to generate a smile score based on certain thresholds.
+
+"""
 
 import tensorflow as tf
 import time
@@ -40,6 +48,7 @@ if not os.path.exists(mypath_end):
 	os.makedirs(mypath_smile_meter_faces)
 
 
+## Takes an image array, generates model predictions from 3 different models, and returns emotion class based on voting. 
 def predict_from_img(image):
 
 	tensor_image = image.reshape([-1, 48, 48, 1])
@@ -113,6 +122,8 @@ def detect_faces(image):
 	face_frames = [(x.left(), x.top(), x.right(), x.bottom()) for x in detected_faces]
 	return face_frames
 
+
+## Takes an image array, detects faces and landmarks, calculates euclidean distances of relevant facial landmarks, and generates a score based on certain thresholds.
 def get_smile_meter_score(image):
 	rects = detector(image, 1)
 	shape = predictor(image, rects[0])
@@ -125,6 +136,7 @@ def get_smile_meter_score(image):
 	score = get_score(h1, v)	
 	return score
 
+## Takes image path, does required preprocessing, calls functions get_smile_meter_score and predict_from_img to get emotion and score.
 def predict_emotion(img_path, random_name, start):
 
 	image = cv2.imread(img_path, 0)
