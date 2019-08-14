@@ -1,8 +1,8 @@
 """
 This script trains the smile detection model and saves the best model.
 
-To train model- python3 keras7.py --train=yes
-To evaluate model- python3 keras7.py --evaluate=yes
+To train model- python3 keras8.py --train=yes
+To evaluate model- python3 keras8.py --evaluate=yes
 """
 
 import time
